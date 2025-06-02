@@ -1,7 +1,38 @@
 # iot-fleet-mgmt
-IOT fleet management web system
+IoT Fleet Management System with Docker, RPM, and NGINX
 
-Project coverage:
+🎯 Goal
+
+Build a lightweight, secure, and professional-grade IoT fleet status agent for rpm-based Linux devices. Each device runs an agent that monitors system and container metrics and exposes the status over HTTP via NGINX.
+
+
+🧱 System Architecture
+
+[ IoT Device (Agent) ]
+  ├── Agent (C++) collects:
+  │     ├── CPU & memory usage
+  │     └── Docker container statuses
+  ├── JSON status output → /var/lib/iot-agent/status.json
+  └── NGINX serves /status over HTTP
+
+[ Manager (Client) ]
+  └── Python CLI tool fetches and prints status from agent via HTTP
+
+📦 Deliverables
+On Agent (IoT Device)
+iot-agent C++ binary (RPM packaged)
+
+iot-agent.service systemd unit
+
+Configured nginx to serve /status
+
+Status data: JSON file with system + Docker container state
+
+On Manager (Fleet Controller)
+fetch_status.py Python CLI to fetch /status via HTTP
+
+
+✅ Project coverage:
 
 Experience with RPM-based Linux
     - You're working on Fedora/RHEL-like systems, building and installing .rpm packages, using dnf, rpm-build, and systemd.
