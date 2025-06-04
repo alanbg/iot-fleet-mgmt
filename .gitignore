@@ -1,1 +1,5 @@
 build/
+*.rpm
+*.tar.gz
+*.o
+*.swp
